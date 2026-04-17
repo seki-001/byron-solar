@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-lavender: #E5E1EE;
+  --color-cyan: #DFFDFF;
+  --color-blue: #90BEDE;
+  --color-aqua: #68EDC6;
+  --color-electric: #90F3FF;
+  --color-navy: #1e2440;
+  --color-text: #1a1a2e;
+  --color-muted: #5a6080;
+  --color-border: #e8eaf0;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-ui-text bg-white;
+    font-family: var(--font-inter), sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 24px rgba(30, 36, 64, 0.08);
+  }
+
+  /* Primary button — navy with white text */
+  .btn-primary {
+    @apply bg-brand-navy text-white px-5 py-2.5 rounded-input text-sm font-semibold
+           transition-all hover:bg-brand-navy-light active:scale-95;
+  }
+
+  /* Blue outlined button */
+  .btn-outline {
+    @apply border border-ui-border-strong text-ui-text px-5 py-2.5 rounded-input text-sm font-semibold
+           bg-white transition-all hover:border-brand-blue hover:text-brand-navy;
+  }
+
+  /* Aqua accent button */
+  .btn-aqua {
+    @apply bg-brand-aqua text-brand-navy px-5 py-2.5 rounded-input text-sm font-semibold
+           transition-all hover:brightness-95 active:scale-95;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-14 lg:py-20;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  /* eBay-style divider */
+  .divider {
+    @apply border-t border-ui-border;
+  }
+
+  /* Category pill */
+  .pill {
+    @apply inline-flex items-center text-xs font-medium px-2.5 py-0.5 rounded-pill;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-lavender); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-blue); }
+
+/* Range slider */
+input[type='range'] {
+  accent-color: var(--color-blue);
+}
