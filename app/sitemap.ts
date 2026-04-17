@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { products } from '@/lib/products'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://arcnadsystems.co.ke'
+  const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://arcnadsystems.vercel.app'
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },

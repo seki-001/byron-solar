@@ -29,7 +29,7 @@ export default function HomePage() {
             '@type': 'ElectricalContractor',
             name: 'Arcnad Systems Kenya',
             description: 'Professional solar panel installation across Kenya',
-            url: 'https://arcnadsystems.co.ke',
+            url: process.env.NEXT_PUBLIC_SITE_URL || 'https://arcnadsystems.vercel.app',
             telephone: '+254714311669',
             email: 'info@arcnadsystems.co.ke',
             areaServed: 'Kenya',
