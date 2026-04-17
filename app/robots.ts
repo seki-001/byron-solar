@@ -3,6 +3,6 @@ import type { MetadataRoute } from 'next'
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [{ userAgent: '*', allow: '/' }],
-    sitemap: 'https://solarco.co.ke/sitemap.xml',
+    sitemap: 'https://arcnadsystems.co.ke/sitemap.xml',
   }
 }

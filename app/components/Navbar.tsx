@@ -42,7 +42,7 @@ export default function Navbar() {
             <div className="w-8 h-8 rounded-lg bg-brand-navy flex items-center justify-center">
               <SunIcon className="w-5 h-5 text-brand-aqua" />
             </div>
-            <span className="text-base font-bold text-brand-navy tracking-tight">SolarCo</span>
+            <span className="text-base font-bold text-brand-navy tracking-tight">ARCNAD SYSTEMS</span>
           </Link>
 
           {/* Desktop nav — centre */}
@@ -73,8 +73,8 @@ export default function Navbar() {
 
           {/* Right: CTA + phone */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
-            <a href="tel:+254700000000" className="text-xs text-ui-muted hover:text-brand-navy transition-colors">
-              +254 700 000 000
+            <a href="tel:+254714311669" className="text-xs text-ui-muted hover:text-brand-navy transition-colors">
+              +254 714 311 669
             </a>
             <Link
               href="/contact"
@@ -128,7 +128,7 @@ export default function Navbar() {
                 <div className="w-7 h-7 rounded-lg bg-brand-navy flex items-center justify-center">
                   <SunIcon className="w-4 h-4 text-brand-aqua" />
                 </div>
-                <span className="font-bold text-brand-navy">SolarCo</span>
+                <span className="font-bold text-brand-navy">ARCNAD SYSTEMS</span>
               </Link>
               <button
                 onClick={() => setMenuOpen(false)}

@@ -84,7 +84,7 @@ export default function CallbackBanner() {
             <p className="text-white/40 text-xs mt-2">
               Or{' '}
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '254700000000'}`}
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '254714311669'}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-aqua hover:underline"

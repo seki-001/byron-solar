@@ -1,11 +1,8 @@
 'use client'
 
-// TODO: Replace the phone number with your actual WhatsApp business number in .env.local
-// NEXT_PUBLIC_WHATSAPP_NUMBER=254700000000
-
 export default function WhatsAppButton() {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '254700000000'
-  const url = `https://wa.me/${number}?text=Hello%20SolarCo!%20I%27d%20like%20to%20enquire%20about%20solar%20solutions.`
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '254714311669'
+  const url = `https://wa.me/${number}?text=Hello%20Arcnad%20Systems!%20I%27d%20like%20to%20enquire%20about%20solar%20solutions.`
 
   return (
     <a

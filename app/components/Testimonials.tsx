@@ -11,7 +11,7 @@ const testimonials = [
     initials: 'MW',
   },
   {
-    quote: 'As a hotel owner in Mombasa, power reliability is critical. SolarCo installed our 50kW system and we haven\'t had a single grid-related outage in two years.',
+    quote: 'As a hotel owner in Mombasa, power reliability is critical. Arcnad Systems installed our 50kW system and we haven\'t had a single grid-related outage in two years.',
     name: 'Hassan Omari',
     county: 'Mombasa',
     system: '50kW Commercial',

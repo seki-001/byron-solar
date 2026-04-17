@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { team } from '@/lib/team'
 
 const timeline = [
-  { year: '2018', title: 'Company Founded', desc: 'SolarCo was founded in Nairobi with a mission to make clean solar energy accessible to every Kenyan.' },
+  { year: '2018', title: 'Company Founded', desc: 'Arcnad Systems was founded in Nairobi with a mission to make clean solar energy accessible to every Kenyan.' },
   { year: '2020', title: '100th Installation', desc: 'Reached our first 100 installations across 8 counties, serving residential and commercial clients.' },
   { year: '2022', title: 'National Expansion', desc: 'Expanded to all 47 counties, establishing regional offices in Mombasa, Kisumu, Nakuru, and Eldoret.' },
   { year: '2024', title: '500+ Customers', desc: "Crossed 500 installations, including Kenya's largest residential rooftop project in Karen, Nairobi." },
@@ -30,7 +30,7 @@ export default function AboutClient() {
           <p className="text-xs text-ui-subtle mb-1">
             <Link href="/" className="hover:text-brand-navy">Home</Link> › About
           </p>
-          <h1 className="text-2xl sm:text-3xl font-bold text-brand-navy">About SolarCo</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-brand-navy">About Arcnad Systems</h1>
           <p className="text-ui-muted text-sm mt-1">Kenya&apos;s most trusted solar installation company since 2018.</p>
         </div>
       </div>
@@ -43,12 +43,12 @@ export default function AboutClient() {
               <p className="text-xs font-semibold uppercase tracking-widest text-ui-subtle mb-2">Our Story</p>
               <h2 className="text-2xl font-bold text-brand-navy mb-4">Why We Do What We Do</h2>
               <p className="text-ui-muted text-sm leading-relaxed mb-3">
-                SolarCo was born out of frustration. Our founder, James Mwangi, watched his mother&apos;s business in
-                Nakuru lose thousands of shillings monthly to KPLC bills and diesel generators. He knew there was a better way.
+                Arcnad Systems was born out of frustration. Our founder watched his mother&apos;s business in
+                Nairobi lose thousands of shillings monthly to KPLC bills and diesel generators. He knew there was a better way.
               </p>
               <p className="text-ui-muted text-sm leading-relaxed mb-3">
-                With a background in electrical engineering and a passion for clean energy, James started SolarCo in
-                2018 with one promise: make solar affordable, reliable, and accessible to every Kenyan.
+                With a background in electrical engineering and a passion for clean energy, the team started Arcnad Systems
+                in 2018 with one promise: make solar affordable, reliable, and accessible to every Kenyan.
               </p>
               <p className="text-ui-muted text-sm leading-relaxed">
                 Today, our certified team has installed 500+ systems, saved customers over KES 200 million in energy

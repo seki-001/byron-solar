@@ -67,7 +67,7 @@ export default function HeroContent() {
             >
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-navy bg-brand-cyan border border-brand-electric px-3 py-1 rounded-pill mb-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-aqua" />
-                Kenya&apos;s Most Trusted Solar Company
+                Kenya&apos;s Most Trusted Solar Solutions
               </span>
             </motion.div>
 

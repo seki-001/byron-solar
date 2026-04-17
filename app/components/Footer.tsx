@@ -15,11 +15,16 @@ export default function Footer() {
                     stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
                 </svg>
               </div>
-              <span className="font-bold text-white">SolarCo</span>
+              <span className="font-bold text-white">ARCNAD SYSTEMS</span>
             </Link>
             <p className="text-white/50 text-xs leading-relaxed mb-4">
               Powering Kenya with clean, affordable solar energy since 2018.
             </p>
+            <address className="not-italic text-white/40 text-xs leading-relaxed mb-4">
+              Maridadi Business Plaza, Nyamakima<br />
+              P.O. Box 74429-00200<br />
+              Nairobi, Kenya
+            </address>
             <div className="flex gap-2">
               {['Facebook', 'Instagram', 'LinkedIn', 'YouTube'].map((s) => (
                 <a key={s} href="#" aria-label={s}
@@ -75,8 +80,8 @@ export default function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-3">Contact</p>
             <ul className="space-y-2.5 text-xs text-white/55">
-              <li>+254 700 000 000</li>
-              <li>info@solarco.co.ke</li>
+              <li>+254 714 311 669</li>
+              <li>info@arcnadsystems.co.ke</li>
               <li>Mon–Fri 8am–5pm<br />Sat 9am–1pm</li>
             </ul>
             <a
@@ -94,7 +99,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-max px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-white/30 text-xs">© 2026 SolarCo Kenya. All rights reserved.</p>
+          <p className="text-white/30 text-xs">© 2026 ARCNAD SYSTEMS Kenya. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/privacy" className="text-white/30 hover:text-white/60 text-xs transition-colors">Privacy</Link>
             <Link href="/privacy#terms" className="text-white/30 hover:text-white/60 text-xs transition-colors">Terms</Link>

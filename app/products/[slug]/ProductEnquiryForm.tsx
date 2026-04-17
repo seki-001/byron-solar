@@ -67,7 +67,7 @@ export default function ProductEnquiryForm({ productName }: Props) {
         </div>
         <div>
           <label className="block text-xs font-medium text-brand-navy mb-1">Phone *</label>
-          <input {...register('phone')} placeholder="+254 700 000 000" className={inputClass} />
+          <input {...register('phone')} placeholder="+254 714 311 669" className={inputClass} />
           {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
         </div>
       </div>

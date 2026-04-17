@@ -11,7 +11,7 @@ export const team: TeamMember[] = [
     id: '1',
     name: 'James Mwangi',
     role: 'Founder & CEO',
-    bio: 'James founded SolarCo with a vision to make clean energy accessible to every Kenyan household and business. With 15 years in renewable energy, he has overseen over 500 installations across Kenya.',
+    bio: 'James co-founded Arcnad Systems with a vision to make clean energy accessible to every Kenyan household and business. With 15 years in renewable energy, he has overseen over 500 installations across Kenya.',
     avatar: '/images/team-james.jpg',
   },
   {

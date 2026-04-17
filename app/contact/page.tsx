@@ -27,7 +27,7 @@ const faqs = [
 export const metadata: Metadata = {
   title: 'Get a Free Solar Quote Kenya',
   description:
-    'Contact SolarCo for a free solar site assessment. Get a customised quote for your home or business.',
+    'Contact Arcnad Systems for a free solar site assessment. Get a customised quote for your home or business.',
 }
 
 export default function ContactPage() {

@@ -4,7 +4,7 @@ import { Resend } from 'resend'
 
 // TODO: Replace with your Resend API key and verified sender domain
 // RESEND_API_KEY=your_resend_key_here
-// CONTACT_EMAIL=info@solarco.co.ke
+// CONTACT_EMAIL=info@arcnadsystems.co.ke
 
 const schema = z.object({
   name: z.string().min(2),
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     const emailBody = `
-New Solar Enquiry from SolarCo Website
+New Solar Enquiry from Arcnad Systems Website
 
 Name: ${data.name}
 Phone: ${data.phone}
@@ -35,12 +35,12 @@ ${data.monthlyBill ? `Monthly KPLC Bill: KES ${data.monthlyBill.toLocaleString()
 ${data.message ? `\nMessage:\n${data.message}` : ''}
 
 ---
-Sent via solarco.co.ke
+Sent via arcnadsystems.co.ke
     `.trim()
 
     await resend.emails.send({
-      from: 'SolarCo Website <noreply@solarco.co.ke>',
-      to: process.env.CONTACT_EMAIL || 'info@solarco.co.ke',
+      from: 'Arcnad Systems Website <noreply@arcnadsystems.co.ke>',
+      to: process.env.CONTACT_EMAIL || 'info@arcnadsystems.co.ke',
       subject: `New Solar Enquiry from ${data.name} — ${data.county}`,
       text: emailBody,
     })

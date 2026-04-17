@@ -88,7 +88,7 @@ export default function ContactClient({ faqs }: Props) {
                         </div>
                         <div>
                           <label className="block text-xs font-medium text-brand-navy mb-1">Phone *</label>
-                          <input {...register('phone')} placeholder="+254 700 000 000" className={inputClass} />
+                          <input {...register('phone')} placeholder="+254 714 311 669" className={inputClass} />
                           {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
                         </div>
                       </div>
@@ -155,8 +155,9 @@ export default function ContactClient({ faqs }: Props) {
                 <h3 className="font-semibold text-brand-navy mb-4 text-sm">Contact Details</h3>
                 <ul className="space-y-3 text-sm">
                   {[
-                    { icon: '📞', label: 'Phone', value: '+254 700 000 000' },
-                    { icon: '✉️', label: 'Email', value: 'info@solarco.co.ke' },
+                    { icon: '📞', label: 'Phone', value: '+254 714 311 669' },
+                    { icon: '✉️', label: 'Email', value: 'info@arcnadsystems.co.ke' },
+                    { icon: '📍', label: 'Address', value: 'Maridadi Business Plaza\nNyamakima, P.O. Box 74429-00200\nNairobi, Kenya' },
                     { icon: '🕐', label: 'Hours', value: 'Mon–Fri 8am–5pm\nSat 9am–1pm' },
                   ].map((item) => (
                     <li key={item.label} className="flex items-start gap-2.5">
@@ -171,7 +172,7 @@ export default function ContactClient({ faqs }: Props) {
               </div>
 
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '254700000000'}?text=Hi%20SolarCo!%20I%27d%20like%20a%20solar%20quote.`}
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '254714311669'}?text=Hi%20Arcnad%20Systems!%20I%27d%20like%20a%20solar%20quote.`}
                 target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-[#25D366] text-white px-4 py-3 rounded-card hover:bg-[#1db954] transition-colors"
               >

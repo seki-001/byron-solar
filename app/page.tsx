@@ -8,11 +8,11 @@ import Testimonials from './components/Testimonials'
 import CallbackBanner from './components/CallbackBanner'
 
 export const metadata: Metadata = {
-  title: 'Solar Solutions Kenya | SolarCo',
+  title: 'Solar Solutions Kenya | Arcnad Systems',
   description:
     'Professional solar panel installation for homes and businesses across Kenya. Get a free site assessment today.',
   openGraph: {
-    title: 'Solar Solutions Kenya | SolarCo',
+    title: 'Solar Solutions Kenya | Arcnad Systems',
     description: 'Residential and commercial solar installations across Kenya. Trusted by 500+ homes and businesses.',
   },
 }
@@ -27,14 +27,17 @@ export default function HomePage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'ElectricalContractor',
-            name: 'SolarCo Kenya',
+            name: 'Arcnad Systems Kenya',
             description: 'Professional solar panel installation across Kenya',
-            url: 'https://solarco.co.ke',
-            telephone: '+254700000000',
-            email: 'info@solarco.co.ke',
+            url: 'https://arcnadsystems.co.ke',
+            telephone: '+254714311669',
+            email: 'info@arcnadsystems.co.ke',
             areaServed: 'Kenya',
             address: {
               '@type': 'PostalAddress',
+              streetAddress: 'Maridadi Business Plaza, Nyamakima',
+              postalCode: '74429-00200',
+              addressLocality: 'Nairobi',
               addressCountry: 'KE',
             },
             openingHours: ['Mo-Fr 08:00-17:00', 'Sa 09:00-13:00'],

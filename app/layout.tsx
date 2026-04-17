@@ -8,16 +8,16 @@ import WhatsAppButton from './components/WhatsAppButton'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://solarco.co.ke'),
+  metadataBase: new URL('https://arcnadsystems.co.ke'),
   title: {
-    default: 'Solar Solutions Kenya | SolarCo',
-    template: '%s | SolarCo',
+    default: 'Solar Solutions Kenya | Arcnad Systems',
+    template: '%s | Arcnad Systems',
   },
   description:
     'Professional solar panel installation for homes and businesses across Kenya. Get a free site assessment today. 500+ installations, 10+ years experience.',
-  keywords: ['solar energy Kenya', 'solar installation Nairobi', 'solar panels Kenya', 'commercial solar Kenya'],
+  keywords: ['solar energy Kenya', 'solar installation Nairobi', 'solar panels Kenya', 'commercial solar Kenya', 'Arcnad Systems'],
   openGraph: {
-    siteName: 'SolarCo Kenya',
+    siteName: 'Arcnad Systems Kenya',
     locale: 'en_KE',
     type: 'website',
   },
