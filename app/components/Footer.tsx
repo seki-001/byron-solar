@@ -9,10 +9,9 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-7 h-7 rounded-lg bg-brand-aqua flex items-center justify-center">
-                <svg className="w-4 h-4 text-brand-navy" viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="12" r="4" />
-                  <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="4" fill="#1e2440" />
+                  <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#1e2440" strokeWidth="1.8" strokeLinecap="round" />
                 </svg>
               </div>
               <span className="font-bold text-white">ARCNAD SYSTEMS</span>
