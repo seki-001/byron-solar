@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
+import ArcnadLogo from './ArcnadLogo'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -37,14 +38,8 @@ export default function Navbar() {
           }`}
         >
           <div className="px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-            <Link href="/" className="flex items-center gap-2 shrink-0">
-              <div className="w-8 h-8 rounded-xl bg-brand-navy flex items-center justify-center">
-                <SunIcon className="w-5 h-5 text-brand-aqua" />
-              </div>
-              <span className="text-base font-bold text-brand-navy tracking-tight hidden sm:inline">
-                ARCNAD SYSTEMS
-              </span>
-            </Link>
+            <ArcnadLogo size="md" className="shrink-0 hidden sm:inline-flex" />
+            <ArcnadLogo variant="mark" size="md" className="shrink-0 sm:hidden" />
 
             <nav className="hidden md:flex items-center gap-1 flex-1 justify-center">
               {navLinks.map((link) => {
@@ -110,12 +105,7 @@ export default function Navbar() {
               transition={{ type: 'tween', duration: 0.22 }}
             >
               <div className="flex items-center justify-between px-5 h-14 border-b border-white/50">
-                <Link href="/" className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-xl bg-brand-navy flex items-center justify-center">
-                    <SunIcon className="w-4 h-4 text-brand-aqua" />
-                  </div>
-                  <span className="font-bold text-brand-navy text-sm">ARCNAD SYSTEMS</span>
-                </Link>
+                <ArcnadLogo size="sm" />
                 <button
                   onClick={() => setMenuOpen(false)}
                   className="glass-icon-btn"
@@ -163,19 +153,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </>
-  )
-}
-
-function SunIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="4" fill="#68EDC6" />
-      <path
-        d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-        stroke="#68EDC6"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-    </svg>
   )
 }

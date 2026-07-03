@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ArcnadLogo from './ArcnadLogo'
 
 const socialLinks = [
   {
@@ -45,17 +46,9 @@ export default function Footer() {
       <div className="container-max section-padding">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-10">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-xl bg-brand-aqua flex items-center justify-center">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="4" fill="#1e2440" />
-                  <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#1e2440" strokeWidth="1.8" strokeLinecap="round" />
-                </svg>
-              </div>
-              <span className="font-bold text-white">ARCNAD SYSTEMS</span>
-            </Link>
+            <ArcnadLogo theme="dark" size="md" className="mb-4" />
             <p className="text-white/50 text-xs leading-relaxed mb-4">
-              Powering Kenya with clean, affordable solar energy since 2018.
+              Solar &amp; electrical systems — powering Kenya with clean energy since 2018.
             </p>
             <address className="not-italic text-white/40 text-xs leading-relaxed mb-4">
               Maridadi Business Plaza, Nyamakima<br />

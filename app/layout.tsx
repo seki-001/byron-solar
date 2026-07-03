@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     'Professional solar panel installation for homes and businesses across Kenya. Get a free site assessment today. 500+ installations, 10+ years experience.',
   keywords: ['solar energy Kenya', 'solar installation Nairobi', 'solar panels Kenya', 'commercial solar Kenya', 'Arcnad Systems'],
   openGraph: {
-    siteName: 'Arcnad Systems Kenya',
+    siteName: 'Arcnad Systems',
     locale: 'en_KE',
     type: 'website',
   },
