@@ -57,27 +57,29 @@ const stats: Stat[] = [
 
 export default function CounterStrip() {
   return (
-    <section className="bg-white border-b border-ui-border py-10">
-      <div className="container-max px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-ui-border">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="bg-white px-6 py-6 flex items-center gap-4"
-            >
-              <div className="w-10 h-10 rounded-lg bg-brand-cyan flex items-center justify-center text-brand-navy shrink-0">
-                {stat.icon}
-              </div>
-              <div>
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                <p className="text-xs text-ui-subtle mt-0.5">{stat.label}</p>
-              </div>
-            </motion.div>
-          ))}
+    <section className="section-padding pt-0">
+      <div className="container-max">
+        <div className="glass-panel-light rounded-3xl p-2">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.4 }}
+                className="glass-subtle rounded-2xl px-5 py-6 flex items-center gap-4"
+              >
+                <div className="w-10 h-10 rounded-xl glass-panel-brand flex items-center justify-center text-brand-navy shrink-0">
+                  {stat.icon}
+                </div>
+                <div>
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                  <p className="text-xs text-ui-subtle mt-0.5">{stat.label}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

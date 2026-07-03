@@ -8,7 +8,7 @@ import WhatsAppButton from './components/WhatsAppButton'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://arcnadsystems.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://arcnad.co.ke'),
   title: {
     default: 'Solar Solutions Kenya | Arcnad Systems',
     template: '%s | Arcnad Systems',

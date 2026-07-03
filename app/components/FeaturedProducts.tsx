@@ -19,7 +19,7 @@ const itemVariants = {
 
 export default function FeaturedProducts() {
   return (
-    <section className="bg-white border-b border-ui-border section-padding">
+    <section className="section-padding">
       <div className="container-max">
         {/* Section header — eBay style: label + title + "see all" link on right */}
         <div className="flex items-end justify-between mb-6">
@@ -55,7 +55,7 @@ export default function FeaturedProducts() {
         <div className="mt-5 sm:hidden">
           <Link
             href="/products"
-            className="w-full block text-center border border-ui-border-strong text-brand-navy py-2.5 rounded-input text-sm font-medium hover:bg-ui-bg-alt transition-colors"
+            className="w-full block text-center arc-btn-outline"
           >
             View All Products
           </Link>

@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { KENYA_COUNTIES } from '@/lib/counties'
+import { submitEnquiry } from '@/lib/submitEnquiry'
 
 const schema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -25,10 +26,11 @@ type FormData = z.infer<typeof schema>
 interface FAQ { q: string; a: string }
 interface Props { faqs: FAQ[] }
 
-const inputClass = "w-full px-3.5 py-2.5 border border-ui-border rounded-input text-sm text-brand-navy placeholder-ui-subtle focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30 bg-white"
+const inputClass = "arc-input arc-input-square px-3.5 py-2.5 text-sm text-brand-navy placeholder-ui-subtle"
 
 export default function ContactClient({ faqs }: Props) {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [billValue, setBillValue] = useState(5000)
 
@@ -38,20 +40,20 @@ export default function ContactClient({ faqs }: Props) {
   })
 
   const onSubmit = async (data: FormData) => {
-    await fetch('/api/enquiry', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
+    setSubmitError(null)
+    const result = await submitEnquiry(data)
+    if (!result.ok) {
+      setSubmitError(result.error)
+      return
+    }
     setSubmitted(true)
   }
 
   return (
     <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}
-      className="pt-14 md:pt-[92px]">
-      {/* Page header */}
-      <div className="bg-white border-b border-ui-border py-6">
-        <div className="container-max px-4 sm:px-6 lg:px-8">
+      className="page-top glass-grid-bg min-h-screen">
+      <div className="container-max px-4 sm:px-6 lg:px-8 pb-4">
+        <div className="glass-panel-light rounded-3xl py-6 px-6 sm:px-8 mb-6">
           <p className="text-xs text-ui-subtle mb-1">
             <Link href="/" className="hover:text-brand-navy">Home</Link> › Contact
           </p>
@@ -60,12 +62,11 @@ export default function ContactClient({ faqs }: Props) {
         </div>
       </div>
 
-      <div className="bg-ui-bg-alt min-h-screen">
-        <div className="container-max px-4 sm:px-6 lg:px-8 py-8">
+      <div className="container-max px-4 sm:px-6 lg:px-8 pb-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* LEFT: Form (2/3 width) */}
             <div className="lg:col-span-2">
-              <div className="bg-white border border-ui-border rounded-card p-6">
+              <div className="glass-card rounded-2xl p-6">
                 {submitted ? (
                   <div className="py-12 text-center">
                     <div className="w-14 h-14 bg-brand-aqua rounded-full flex items-center justify-center mx-auto mb-4">
@@ -79,6 +80,9 @@ export default function ContactClient({ faqs }: Props) {
                 ) : (
                   <>
                     <h2 className="font-bold text-brand-navy mb-5 text-base">Request a Quote</h2>
+                    {submitError && (
+                      <p className="mb-4 text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-3 py-2">{submitError}</p>
+                    )}
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
@@ -140,7 +144,7 @@ export default function ContactClient({ faqs }: Props) {
                       </div>
 
                       <button type="submit" disabled={isSubmitting}
-                        className="w-full bg-brand-navy text-white py-2.5 rounded-input text-sm font-semibold hover:bg-brand-navy-light transition-colors disabled:opacity-60">
+                        className="w-full btn-primary py-2.5 disabled:opacity-60">
                         {isSubmitting ? 'Sending…' : 'Request Free Quote'}
                       </button>
                     </form>
@@ -151,12 +155,12 @@ export default function ContactClient({ faqs }: Props) {
 
             {/* RIGHT: Contact info sidebar */}
             <div className="space-y-4">
-              <div className="bg-white border border-ui-border rounded-card p-5">
+              <div className="glass-panel-light rounded-2xl p-5">
                 <h3 className="font-semibold text-brand-navy mb-4 text-sm">Contact Details</h3>
                 <ul className="space-y-3 text-sm">
                   {[
                     { icon: '📞', label: 'Phone', value: '+254 714 311 669' },
-                    { icon: '✉️', label: 'Email', value: 'info@arcnadsystems.co.ke' },
+                    { icon: '✉️', label: 'Email', value: 'info@arcnad.co.ke' },
                     { icon: '📍', label: 'Address', value: 'Maridadi Business Plaza\nNyamakima, P.O. Box 74429-00200\nNairobi, Kenya' },
                     { icon: '🕐', label: 'Hours', value: 'Mon–Fri 8am–5pm\nSat 9am–1pm' },
                   ].map((item) => (
@@ -183,28 +187,27 @@ export default function ContactClient({ faqs }: Props) {
                 </div>
               </a>
 
-              {/* Map placeholder */}
-              <div className="bg-white border border-ui-border rounded-card overflow-hidden h-40 flex items-center justify-center">
-                {/* TODO: Replace with your Google Maps embed iframe */}
-                <div className="text-center text-ui-subtle">
-                  <svg className="w-8 h-8 mx-auto mb-1.5 text-ui-border-strong" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0zM19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                  </svg>
-                  <p className="text-xs font-medium text-ui-muted">Nairobi, Kenya</p>
-                  <p className="text-[11px] text-ui-subtle">Map placeholder</p>
-                </div>
+              <div className="glass-panel-light rounded-2xl overflow-hidden h-48 sm:h-52">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31910.430927334237!2d36.78746158071461!3d-1.2920714887355504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f111908328c3f%3A0xa1bee1fada5b03c9!2sArcnad%20Solar%20%26%20Electricals!5e0!3m2!1sen!2ske!4v1783041941597!5m2!1sen!2ske"
+                  title="Arcnad Solar & Electricals — Maridadi Business Plaza, Nyamakima"
+                  className="w-full h-full border-0"
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
               </div>
             </div>
           </div>
 
           {/* FAQ */}
-          <div className="mt-8 bg-white border border-ui-border rounded-card p-6 max-w-3xl">
+          <div className="mt-8 glass-card rounded-2xl p-6 max-w-3xl">
             <h2 className="font-bold text-brand-navy mb-4 text-base">Frequently Asked Questions</h2>
             <div className="space-y-2">
               {faqs.map((faq, i) => (
-                <div key={i} className="border border-ui-border rounded-card overflow-hidden">
+                <div key={i} className="glass-subtle rounded-xl overflow-hidden">
                   <button
-                    className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-ui-bg-alt transition-colors"
+                    className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-white/30 transition-colors"
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   >
                     <span className="font-medium text-brand-navy text-sm pr-4">{faq.q}</span>
@@ -236,7 +239,6 @@ export default function ContactClient({ faqs }: Props) {
             </div>
           </div>
         </div>
-      </div>
     </motion.main>
   )
 }

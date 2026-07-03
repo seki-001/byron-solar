@@ -1,10 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
-import { Resend } from 'resend'
-
-// TODO: Replace with your Resend API key and verified sender domain
-// RESEND_API_KEY=your_resend_key_here
-// CONTACT_EMAIL=info@arcnadsystems.co.ke
 
 const schema = z.object({
   name: z.string().min(2),
@@ -17,33 +12,52 @@ const schema = z.object({
 })
 
 export async function POST(req: NextRequest) {
+  const accessKey = process.env.WEB3FORMS_ACCESS_KEY
+  if (!accessKey) {
+    console.error('Enquiry API: WEB3FORMS_ACCESS_KEY is not set')
+    return NextResponse.json(
+      { error: 'Form service is not configured. Please try WhatsApp or call us directly.' },
+      { status: 503 }
+    )
+  }
+
   try {
     const body = await req.json()
     const data = schema.parse(body)
 
-    const resend = new Resend(process.env.RESEND_API_KEY)
+    const lines = [
+      `Name: ${data.name}`,
+      `Phone: ${data.phone}`,
+      `Email: ${data.email || 'Not provided'}`,
+      `County: ${data.county}`,
+      `Property type: ${data.propertyType}`,
+      data.monthlyBill ? `Monthly KPLC bill: KES ${data.monthlyBill.toLocaleString()}` : null,
+      data.message ? `\nMessage:\n${data.message}` : null,
+    ].filter(Boolean)
 
-    const emailBody = `
-New Solar Enquiry from Arcnad Systems Website
-
-Name: ${data.name}
-Phone: ${data.phone}
-Email: ${data.email || 'Not provided'}
-County: ${data.county}
-Property Type: ${data.propertyType}
-${data.monthlyBill ? `Monthly KPLC Bill: KES ${data.monthlyBill.toLocaleString()}` : ''}
-${data.message ? `\nMessage:\n${data.message}` : ''}
-
----
-Sent via arcnadsystems.co.ke
-    `.trim()
-
-    await resend.emails.send({
-      from: 'Arcnad Systems Website <noreply@arcnadsystems.co.ke>',
-      to: process.env.CONTACT_EMAIL || 'info@arcnadsystems.co.ke',
-      subject: `New Solar Enquiry from ${data.name} — ${data.county}`,
-      text: emailBody,
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: accessKey,
+        subject: `New enquiry — ${data.name} (${data.county})`,
+        from_name: 'Arcnad Website',
+        name: data.name,
+        phone: data.phone,
+        email: data.email || '',
+        county: data.county,
+        property_type: data.propertyType,
+        monthly_bill: data.monthlyBill ?? '',
+        message: lines.join('\n'),
+      }),
     })
+
+    const result = (await res.json()) as { success?: boolean; message?: string }
+
+    if (!res.ok || !result.success) {
+      console.error('Web3Forms error:', result.message ?? res.status)
+      return NextResponse.json({ error: 'Failed to send enquiry. Please try again or WhatsApp us.' }, { status: 502 })
+    }
 
     return NextResponse.json({ success: true })
   } catch (err) {

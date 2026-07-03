@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { KENYA_COUNTIES } from '@/lib/counties'
+import { submitEnquiry } from '@/lib/submitEnquiry'
 
 const schema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -22,6 +23,7 @@ interface Props {
 
 export default function ProductEnquiryForm({ productName }: Props) {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const {
     register,
     handleSubmit,
@@ -29,21 +31,22 @@ export default function ProductEnquiryForm({ productName }: Props) {
   } = useForm<FormData>({ resolver: zodResolver(schema) })
 
   const onSubmit = async (data: FormData) => {
-    await fetch('/api/enquiry', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...data,
-        propertyType: 'Product Enquiry',
-        message: `Product: ${productName}\n\n${data.message || ''}`,
-      }),
+    setSubmitError(null)
+    const result = await submitEnquiry({
+      ...data,
+      propertyType: 'Product Enquiry',
+      message: `Product: ${productName}\n\n${data.message || ''}`,
     })
+    if (!result.ok) {
+      setSubmitError(result.error)
+      return
+    }
     setSubmitted(true)
   }
 
   if (submitted) {
     return (
-      <div className="bg-brand-cyan/30 border border-brand-blue/30 rounded-card p-6 text-center">
+      <div className="glass-panel-brand rounded-2xl p-6 text-center">
         <div className="w-10 h-10 bg-brand-aqua rounded-full flex items-center justify-center mx-auto mb-3">
           <svg className="w-5 h-5 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -55,10 +58,13 @@ export default function ProductEnquiryForm({ productName }: Props) {
     )
   }
 
-  const inputClass = "w-full px-3.5 py-2.5 border border-ui-border rounded-input text-sm text-brand-navy placeholder-ui-subtle focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
+  const inputClass = "arc-input arc-input-square px-3.5 py-2.5 text-sm text-brand-navy placeholder-ui-subtle w-full"
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-3.5">
+      {submitError && (
+        <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-3 py-2">{submitError}</p>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
         <div>
           <label className="block text-xs font-medium text-brand-navy mb-1">Full Name *</label>
@@ -79,7 +85,7 @@ export default function ProductEnquiryForm({ productName }: Props) {
 
       <div>
         <label className="block text-xs font-medium text-brand-navy mb-1">County *</label>
-        <select {...register('county')} className={`${inputClass} bg-white`}>
+        <select {...register('county')} className={inputClass}>
           <option value="">Select county...</option>
           {KENYA_COUNTIES.map((c) => <option key={c} value={c}>{c}</option>)}
         </select>
@@ -94,7 +100,7 @@ export default function ProductEnquiryForm({ productName }: Props) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-brand-navy text-white py-2.5 rounded-input text-sm font-semibold hover:bg-brand-navy-light transition-colors disabled:opacity-60"
+        className="w-full btn-primary py-2.5 disabled:opacity-60"
       >
         {isSubmitting ? 'Sending…' : 'Send Enquiry'}
       </button>

@@ -37,7 +37,7 @@ const itemVariants = {
 
 export default function WhySolarSection() {
   return (
-    <section className="bg-ui-bg-alt border-b border-ui-border section-padding">
+    <section className="section-padding">
       <div className="container-max">
         <motion.div
           className="mb-10"
@@ -65,9 +65,9 @@ export default function WhySolarSection() {
               variants={itemVariants}
               whileHover={{ y: -2 }}
               transition={{ type: 'spring', stiffness: 400 }}
-              className="bg-white border border-ui-border rounded-card p-5 hover:border-brand-blue hover:shadow-card-hover transition-all"
+              className="glass-card rounded-2xl p-5 hover:shadow-card-hover transition-all"
             >
-              <div className="w-10 h-10 rounded-lg bg-brand-cyan flex items-center justify-center text-brand-navy mb-4">
+              <div className="w-10 h-10 rounded-xl glass-panel-brand flex items-center justify-center text-brand-navy mb-4">
                 {reason.icon}
               </div>
               <h3 className="font-semibold text-brand-navy mb-2 text-sm">{reason.title}</h3>

@@ -23,10 +23,9 @@ const certifications = [
 export default function AboutClient() {
   return (
     <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}
-      className="pt-14 md:pt-[92px]">
-      {/* Page header */}
-      <div className="bg-white border-b border-ui-border py-6">
-        <div className="container-max px-4 sm:px-6 lg:px-8">
+      className="page-top glass-grid-bg min-h-screen">
+      <div className="container-max px-4 sm:px-6 lg:px-8 pb-4">
+        <div className="glass-panel-light rounded-3xl py-6 px-6 sm:px-8 mb-6">
           <p className="text-xs text-ui-subtle mb-1">
             <Link href="/" className="hover:text-brand-navy">Home</Link> › About
           </p>
@@ -35,8 +34,7 @@ export default function AboutClient() {
         </div>
       </div>
 
-      {/* Brand story */}
-      <section className="bg-white border-b border-ui-border section-padding">
+      <section className="section-padding pt-0">
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
@@ -57,7 +55,7 @@ export default function AboutClient() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}
-              className="bg-gradient-to-br from-brand-cyan to-brand-lavender rounded-card p-10 flex items-center justify-center h-64">
+              className="glass-panel-light rounded-3xl p-10 flex items-center justify-center h-64">
               <svg width="320" height="180" viewBox="0 0 320 180" fill="none">
                 <rect x="20" y="30" width="120" height="80" rx="8" fill="#90BEDE" opacity="0.3" />
                 <rect x="160" y="30" width="140" height="80" rx="8" fill="#68EDC6" opacity="0.25" />
@@ -94,7 +92,7 @@ export default function AboutClient() {
               <motion.div key={card.title}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="bg-white/5 border border-white/10 rounded-card p-6"
+                className="glass-panel-dark rounded-2xl p-6"
               >
                 <div className="text-brand-aqua mb-3">{card.icon}</div>
                 <h3 className="font-bold text-white mb-2">{card.title}</h3>
@@ -106,7 +104,7 @@ export default function AboutClient() {
       </section>
 
       {/* Team */}
-      <section className="bg-white border-b border-ui-border section-padding">
+      <section className="section-padding">
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <p className="text-xs font-semibold uppercase tracking-widest text-ui-subtle mb-1">Team</p>
@@ -117,7 +115,7 @@ export default function AboutClient() {
               <motion.div key={member.id}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="bg-white border border-ui-border rounded-card p-5 hover:border-brand-blue hover:shadow-card transition-all"
+                className="glass-card rounded-2xl p-5 hover:shadow-card-hover transition-all"
               >
                 <div className="w-14 h-14 rounded-full bg-brand-cyan flex items-center justify-center text-brand-navy text-xl font-bold mb-4">
                   {member.name.split(' ').map((n) => n[0]).join('')}
@@ -132,7 +130,7 @@ export default function AboutClient() {
       </section>
 
       {/* Certifications */}
-      <section className="bg-ui-bg-alt border-b border-ui-border py-10">
+      <section className="section-padding py-10">
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-widest text-ui-subtle mb-5 text-center">Certifications & Memberships</p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -140,7 +138,7 @@ export default function AboutClient() {
               <motion.span key={cert}
                 initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.35 }}
-                className="bg-white border border-ui-border rounded-card px-4 py-2 text-xs text-ui-muted font-medium hover:border-brand-blue hover:text-brand-navy transition-all"
+                className="glass-badge-light px-4 py-2 text-xs font-medium"
               >
                 {cert}
               </motion.span>
@@ -150,7 +148,7 @@ export default function AboutClient() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-white border-b border-ui-border section-padding">
+      <section className="section-padding">
         <div className="container-max px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <p className="text-xs font-semibold uppercase tracking-widest text-ui-subtle mb-1">History</p>
@@ -168,7 +166,7 @@ export default function AboutClient() {
                   className={`flex items-center gap-6 ${idx % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
                 >
                   <div className={`flex-1 ${idx % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                    <div className={`inline-block bg-white border border-ui-border rounded-card p-4 max-w-xs hover:border-brand-blue transition-colors ${idx % 2 === 0 ? 'ml-auto' : ''}`}>
+                    <div className={`inline-block glass-card rounded-2xl p-4 max-w-xs hover:shadow-card transition-shadow ${idx % 2 === 0 ? 'ml-auto' : ''}`}>
                       <p className="font-bold text-brand-navy text-sm mb-1">{item.title}</p>
                       <p className="text-ui-muted text-xs">{item.desc}</p>
                     </div>
@@ -185,7 +183,7 @@ export default function AboutClient() {
           {/* Mobile horizontal scroll */}
           <div className="md:hidden flex gap-3 overflow-x-auto pb-2 -mx-4 px-4">
             {timeline.map((item) => (
-              <div key={item.year} className="min-w-[200px] bg-white border border-ui-border rounded-card p-4 shrink-0">
+              <div key={item.year} className="min-w-[200px] glass-card rounded-2xl p-4 shrink-0">
                 <span className="text-brand-blue font-bold text-lg">{item.year}</span>
                 <p className="font-semibold text-brand-navy text-xs mt-1 mb-1">{item.title}</p>
                 <p className="text-ui-muted text-xs">{item.desc}</p>
@@ -196,13 +194,23 @@ export default function AboutClient() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-navy py-12">
-        <div className="container-max px-4 sm:px-6 lg:px-8 text-center">
+      <section className="section-padding py-0 pb-10">
+        <div className="container-max px-4 sm:px-6 lg:px-8">
+          <div className="bg-brand-navy rounded-3xl py-12 px-6 text-center relative overflow-hidden">
+            <div className="absolute inset-0 opacity-30 pointer-events-none"
+              style={{
+                backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)',
+                backgroundSize: '64px 64px',
+              }}
+            />
+            <div className="relative">
           <h2 className="text-2xl font-bold text-white mb-2">Join 500+ happy customers</h2>
           <p className="text-white/50 text-sm mb-6">Start your solar journey with Kenya&apos;s most experienced team.</p>
-          <Link href="/contact" className="inline-flex items-center gap-2 bg-brand-aqua text-brand-navy px-6 py-2.5 rounded-input font-semibold text-sm hover:brightness-95 transition-all">
+          <Link href="/contact" className="inline-flex items-center gap-2 btn-aqua px-6 py-2.5 font-semibold text-sm">
             Get a Free Assessment
           </Link>
+            </div>
+          </div>
         </div>
       </section>
     </motion.main>

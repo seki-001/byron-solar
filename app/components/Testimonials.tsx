@@ -28,7 +28,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-white border-b border-ui-border section-padding">
+    <section className="section-padding">
       <div className="container-max">
         <div className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-widest text-ui-subtle mb-1">Testimonials</p>
@@ -43,7 +43,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="min-w-[280px] md:min-w-0 bg-white border border-ui-border rounded-card p-5 flex flex-col hover:border-brand-blue hover:shadow-card transition-all"
+              className="min-w-[280px] md:min-w-0 glass-card rounded-2xl p-5 flex flex-col hover:shadow-card-hover transition-all"
             >
               {/* Stars */}
               <div className="flex gap-0.5 mb-3">

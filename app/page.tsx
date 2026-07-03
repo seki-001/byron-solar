@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="glass-grid-bg min-h-screen">
       {/* JSON-LD: LocalBusiness */}
       <script
         type="application/ld+json"
@@ -29,9 +29,9 @@ export default function HomePage() {
             '@type': 'ElectricalContractor',
             name: 'Arcnad Systems Kenya',
             description: 'Professional solar panel installation across Kenya',
-            url: process.env.NEXT_PUBLIC_SITE_URL || 'https://arcnadsystems.vercel.app',
+            url: process.env.NEXT_PUBLIC_SITE_URL || 'https://arcnad.co.ke',
             telephone: '+254714311669',
-            email: 'info@arcnadsystems.co.ke',
+            email: 'info@arcnad.co.ke',
             areaServed: 'Kenya',
             address: {
               '@type': 'PostalAddress',
