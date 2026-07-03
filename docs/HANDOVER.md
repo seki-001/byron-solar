@@ -22,7 +22,7 @@
 ```
 NEXT_PUBLIC_SITE_URL=https://arcnad.co.ke
 NEXT_PUBLIC_WHATSAPP_NUMBER=254714311669
-WEB3FORMS_ACCESS_KEY=<from web3forms.com dashboard>
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=<from web3forms.com dashboard>
 ```
 
 Copy `.env.example` to `.env.local` for local dev. Redeploy after changing env vars.
@@ -31,10 +31,11 @@ Copy `.env.example` to `.env.local` for local dev. Redeploy after changing env v
 
 1. Sign up at [web3forms.com](https://web3forms.com) (free: **250 submissions/month**)
 2. Create a form → set notification email (e.g. `info@arcnad.co.ke`)
-3. Copy the **Access Key** → `WEB3FORMS_ACCESS_KEY` in Vercel
-4. Submit a test enquiry on `/contact`
+3. Copy the **Access Key** → `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel (Production + Preview)
+4. In Web3Forms dashboard → **Settings** → restrict to `arcnad.co.ke` and your Vercel preview URL
+5. Submit a test enquiry on `/contact`
 
-No domain verification or paid email plan required. Submissions also appear in the Web3Forms dashboard.
+Forms submit **from the browser** directly to Web3Forms (their free plan blocks server-side/Vercel proxy calls). The access key is public by design. Submissions also appear in the Web3Forms dashboard.
 
 **Alternatives if you outgrow 250/month:** Supabase free tier (store rows in Postgres), Google Forms embed, or Formspree free tier (50/month).
 
@@ -56,9 +57,9 @@ No domain verification or paid email plan required. Submissions also appear in t
 
 ---
 
-## API
+## Forms
 
-`POST /api/enquiry` — validates with Zod, forwards to Web3Forms server-side (key never exposed to browser)
+`lib/submitEnquiry.ts` — client-side POST to `https://api.web3forms.com/submit` (used by Contact, product enquiry, callback banner)
 
 ---
 
